@@ -1,0 +1,79 @@
+html { height: 100%; }
+body {
+  padding: 1rem;
+  flex-wrap: wrap;
+  text-align: center;
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.container {
+  width: 90%;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.jchar {
+  font-size: 9rem;
+  padding: 1rem;
+  background-color: #fafafa;
+  flex: 1 0 auto;
+  max-width: 10rem;
+  margin: 0 auto;
+  border-radius: 50%;
+  box-shadow: 1px 1px 4px rgba(0,0,0,.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.input_box {
+  list-style-type: none;
+  margin: 0;
+  padding: 3rem 0;
+  
+  li {
+    display: inline-block;
+  }
+}
+
+.choice {
+  display: inline-block;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background: none;
+  font-size: 2rem;
+  border: 1px solid #ccc;
+  cursor: pointer;
+  padding: .7rem;
+  margin: 0 .6rem;
+  width: 6rem;
+  height: 6rem;
+  text-align: center;
+  outline: none;
+}
+
+
+.good {
+  box-shadow: 0 0 17px 12px green;
+}
+
+.bad {
+    box-shadow: 0 0 17px 12px red;
+}
+
+.result {
+  transition: all .5s ease-out;
+}
+
+.score {
+  display: flex;
+  justify-content: space-between;
+  font-size: 2.6rem;
+  opacity: .85;
+}
+
+#goodCount { color: green; }
+#badCount { color: red; }

@@ -1,0 +1,27 @@
+{% load staticfiles %}
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="description" content="">
+        <meta name="author" content="">
+
+        <link href="{% static 'css/hiragana_training.css' %}" rel="stylesheet">
+    </head>
+    <body>
+        <div class="container">
+            <div id="score" class="score">
+                <div id="goodCount">0</div>
+                <div id="badCount">0</div>
+            </div>
+            <div class="jchar result" id="jchar">
+            <!--   ソシノンツ -->
+            </div>
+            <div id="romaji" style="display: none;"></div>
+            <ul class="input_box">
+                <li><input id="input_field" type="text"></li>
+            </ul>
+        </div>
+        <script src="{% static 'js/hiragana_training.js' %}"></script>
+    </body>
+</html>
