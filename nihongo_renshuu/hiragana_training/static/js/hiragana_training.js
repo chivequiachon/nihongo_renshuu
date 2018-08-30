@@ -7,6 +7,8 @@ const badCount = document.getElementById('badCount');
 let goodScore = 0;
 let badScore = 0;
 
+var seconds = 5;
+
 const createKana = (romaji, katakana) => ({ romaji, katakana });
 const kanas = [
   // あ　い　う　え　お
@@ -105,6 +107,7 @@ document.getElementById("input_field")
         badCount.textContent = ++ badScore;
       }
 
+      seconds = 5
       document.getElementById("input_field").value = ''
       getRandomKana();
     }
@@ -116,3 +119,18 @@ result.forEach(fb => fb.addEventListener('transitionend', (e) => {
   fb.classList.remove('bad');
   fb.classList.remove('good');
 }));
+
+// Update the count down every 1 second
+setInterval(function() {
+  // Output the result in an element with id="demo"
+  document.getElementById("time").innerHTML = seconds + "s";
+  if (seconds == 0) {
+    seconds = 5;
+    jchar.classList.add('bad');
+    badCount.textContent = ++ badScore;
+    document.getElementById("input_field").value = ''
+    getRandomKana();
+  } else {
+    seconds--;
+  }
+}, 1000);
