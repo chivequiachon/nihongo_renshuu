@@ -19,5 +19,6 @@ from django.conf.urls import url, include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('hiragana_training.urls')),
+    path('hiragana/', include('hiragana_training.urls')),
+    path('katakana/', include('katakana_training.urls')),
 ]
