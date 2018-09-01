@@ -1,4 +1,5 @@
 *.sql
+.DS_Store
 *.pyc
 staticfiles
 db.sqlite3

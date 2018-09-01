@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'hiragana_training',
     'katakana_training',
+    'phrases_training',
 ]
 
 MIDDLEWARE = [

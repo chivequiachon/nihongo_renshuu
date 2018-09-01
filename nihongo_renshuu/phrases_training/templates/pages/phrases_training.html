@@ -1,0 +1,105 @@
+{% load staticfiles %}
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="description" content="">
+        <meta name="author" content="">
+
+        <link href="{% static 'css/phrases_training.css' %}" rel="stylesheet">
+    </head>
+    <body>
+        <div class="container">
+            <div id="score" class="score">
+                <div id="correctCount">0</div>
+                <div id="mistakeCount">0</div>
+            </div>
+            <div id="time"></div>
+            <div class="jphrase result" id="jphrase">
+                <!--   ソシノンツ -->
+            </div>
+            <div id="romaji" style="display: none;"></div>
+          
+            <ul class="input_box">
+                <li><input id="input_field" type="text"></li>
+            </ul>
+        </div>
+        <script src="{% static 'jquery/jquery.min.js' %}"></script>
+        {% block content %}
+        <script>
+            const result = document.querySelectorAll('.result');
+            const jphrase = document.getElementById('jphrase');
+            const romaji = document.getElementById('romaji');
+
+            const correctCount = document.getElementById('correctCount');
+            const mistakeCount = document.getElementById('mistakeCount');
+            let correctPoints = 0;
+            let mistakePoints = 0;
+
+            var seconds = 10;
+            var answer = "";
+
+            const getRandomKana = () => {
+                $.ajax({
+                    url: '{{ script }}',
+                    type: 'get',
+                    dataType: 'json',
+                    async: false,
+                    success: function(data) {
+                        jphrase.textContent = data['question']['phrase']
+                        answer = data['question']['romaji']
+                        seconds = 10;
+                    },
+                    failure: function(data) { 
+                        console.log('Got an exception!');
+                    }
+                }); 
+            }
+
+            document.getElementById("input_field")
+                .addEventListener("keyup", function(event) {
+                event.preventDefault();
+                if (event.keyCode === 13) {
+                  const romaji = document.getElementById("input_field").value;
+                  const currentRomaji = answer;
+                  const goodAnswer = romaji === currentRomaji;
+
+                  if ( goodAnswer ) {
+                    jphrase.classList.add('good');
+                    correctCount.textContent = ++ correctPoints;
+                  } else {
+                    jphrase.classList.add('bad');
+                    mistakeCount.textContent = ++ mistakePoints;
+                  }
+
+                  document.getElementById("input_field").value = ''
+                  getRandomKana();
+                }
+            });
+
+            getRandomKana();
+
+            result.forEach(fb => fb.addEventListener('transitionend', (e) => {
+              fb.classList.remove('bad');
+              fb.classList.remove('good');
+            }));
+
+            const activateCountdownTimer = () => {
+                // Output the result in an element with id="demo"
+                document.getElementById("time").innerHTML = seconds + "s";
+                if (seconds == 0) {
+                    jphrase.classList.add('bad');
+                    mistakeCount.textContent = ++ mistakePoints;
+                    document.getElementById("input_field").value = ''
+                    getRandomKana();
+                } else {
+                    seconds--;
+                }
+            }
+
+            // Update the count down every 1 second
+            setInterval(activateCountdownTimer, 1000);
+        </script>
+        {% endblock %}
+    </body>
+</html>
