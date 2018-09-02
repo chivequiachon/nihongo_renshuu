@@ -21,5 +21,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('hiragana/', include('hiragana_training.urls')),
     path('katakana/', include('katakana_training.urls')),
-    path('phrases/', include('phrases_training.urls')),
+    path('jphrase/', include('phrases_training.urls')),
 ]

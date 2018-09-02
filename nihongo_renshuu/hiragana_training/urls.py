@@ -2,5 +2,5 @@ from django.conf.urls import url
 from . import views
 
 urlpatterns = [
-    url(r'^$', views.sample, name='sample'),
+    url(r'^$', views.show_hiragana_training, name='hiragana_training'),
 ]
