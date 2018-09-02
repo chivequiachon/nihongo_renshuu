@@ -14,12 +14,12 @@ body {
   margin: 0 auto;
 }
 
-.jchar {
-  font-size: 9rem;
+.jphrase {
+  font-size: 2rem;
   padding: 1rem;
   background-color: #fafafa;
   flex: 1 0 auto;
-  max-width: 10rem;
+  max-width: 50rem;
   margin: 0 auto;
   border-radius: 50%;
   box-shadow: 1px 1px 4px rgba(0,0,0,.5);
@@ -61,7 +61,7 @@ body {
 }
 
 .bad {
-    box-shadow: 0 0 17px 12px red;
+  box-shadow: 0 0 17px 12px red;
 }
 
 .result {
@@ -75,5 +75,5 @@ body {
   opacity: .85;
 }
 
-#goodCount { color: green; }
-#badCount { color: red; }
+#correctCount { color: green; }
+#mistakeCount { color: red; }

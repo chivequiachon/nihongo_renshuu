@@ -1,6 +1,8 @@
 from django.shortcuts import render
+from django.conf import settings
+
 
 def show_jphrase_training(request):
-    script = "https://script.google.com/macros/s/AKfycbwCaVvi8tNx7uZU0Xu0DMze9oJIiCR68HB-xhAH5eU7b05AhtKN/exec"
+    script = settings.constants.GA_SCRIPT
     return render(request, 'pages/phrases_training.html', {"script": script})
     
